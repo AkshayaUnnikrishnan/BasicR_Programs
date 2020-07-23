@@ -1,0 +1,4 @@
+file<-read.csv("Cutlets.csv")
+x<-file[,c(1)]
+y<-file[,c(2)]
+t.test(x,y)
