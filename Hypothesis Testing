@@ -2,3 +2,9 @@ file<-read.csv("Cutlets.csv")
 x<-file[,c(1)]
 y<-file[,c(2)]
 t.test(x,y)
+
+file3<-read.csv("BuyerRatio.csv")
+a<-file3[,c(2)]
+b<-file3[,c(3)]
+
+t.test(a,b)
