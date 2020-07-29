@@ -1,3 +1,6 @@
+Clustering Assignments-crimedata problem
+Inference: 4 clusters are formed
+
 mydata1<-read.csv("crime_data.csv")
 mydata<-scale(mydata1[,2:4])
 d<-dist(mydata, method = "euclidean")
@@ -13,6 +16,39 @@ library(plyr)
 x<-runif(50)
 y<-runif(50)
 data<-cbind(x,y)
+plot(data)
+km<-kmeans(data,4)
+
+install.packages("animation")
+library(animation)
+windows()
+km<-kmeans.ani(data,4)
+wss<-c()
+for(i in 2:15) wss[i]<-sum(kmeans(data,centers = i)$withinss)
+plot(1:15,wss,type = "b",xlab = "No of clusters",ylab = "Avg distance")
+
+**********************************************************************************************************************************************************
+Clustering Assignmnet- Eastwest Airlines problem
+**hierarchial Clustering
+Inference: 4 clusters are formed
+
+
+install.packages("xlsx")
+EWAirlines<-read.xlsx("EastWestAirlines.xlsx")
+EWAirlines1<-scale(mydata1[,2:4])
+d<-dist(mydata, method = "euclidean")
+fit<-hclust(d,method = "centroid") #use average method also
+plot(fit)
+groups<-cutree(fit,k=3) # use different k values
+rect.hclust(fit,k=3,border = "blue") # diff colour
+clusters=data.frame('Air'=EWAirlines[,1],'Cluster'=groups)
+
+##kmeans Clustering
+install.packages("plyr")
+library(plyr)
+m<-runif(50)
+n<-runif(50)
+data<-cbind(m,n)
 plot(data)
 km<-kmeans(data,4)
 
